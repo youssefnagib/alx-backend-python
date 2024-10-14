@@ -10,7 +10,6 @@ Use the time module to measure an approximate elapsed time.
 
 import time
 import asyncio
-from typing import Union
 wait_n = __import__('1-concurrent_coroutines').wait_n
 
 
@@ -24,12 +23,9 @@ def measure_time(n: int, max_delay: int) -> float:
     Returns:
         float: Total execution time divided by n, or None if n is 0
     '''
-    # if n == 0:
-    #     return None
 
     start_time = time.time()
-    for _ in range(n):
-        asyncio.run(wait_n(n, max_delay))
+    asyncio.run(wait_n(n, max_delay))
     end_time = time.time()
 
     total_time = end_time - start_time
