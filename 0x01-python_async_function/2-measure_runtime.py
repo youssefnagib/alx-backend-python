@@ -7,13 +7,14 @@ and returns total_time / n. Your function should return a float.
 
 Use the time module to measure an approximate elapsed time.
 '''
+
 import time
 import asyncio
 from typing import Union
 wait_n = __import__('1-concurrent_coroutines').wait_n
 
 
-def measure_time(n: int, max_delay: int) -> Union[float, None]:
+def measure_time(n: int, max_delay: int) -> float:
     '''
     Measure the total execution time for wait_n(n, max_delay)
     and returns total_time / n.
@@ -23,8 +24,8 @@ def measure_time(n: int, max_delay: int) -> Union[float, None]:
     Returns:
         float: Total execution time divided by n, or None if n is 0
     '''
-    if n == 0:
-        return None
+    # if n == 0:
+    #     return None
 
     start_time = time.time()
     for _ in range(n):
