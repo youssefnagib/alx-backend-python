@@ -22,7 +22,3 @@ class TestAccessNestedMap(unittest.TestCase):
         test difrrent nested map and path and expected
         '''
         self.assertEqual(access_nested_map(nested_map, path), expected)
-
-    @parameterized.expand([
-
-    ])
