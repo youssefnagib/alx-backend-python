@@ -4,7 +4,7 @@ Test the utils module
 """
 
 
-from unittest.mock import Mock, patch
+from unittest.mock import Mock, patch, PropertyMock
 import unittest
 from parameterized import parameterized
 from client import GithubOrgClient
@@ -23,3 +23,12 @@ class TestGithubOrgClient(unittest.TestCase):
         client.org()
         client.org()
         mock_get.assert_called_once_with("https://api.github.com/orgs/" + org)
+
+    def test_public_repos_url(self):
+        '''Test public'''
+        with patch('client.GithubOrgClient.org',
+                   new_callable=PropertyMock) as mock:
+            # make it return a known payload.
+            mock.return_value = {"repos_url": "google"}
+            client = GithubOrgClient("...")
+            self.assertEqual(client._public_repos_url, "google")
